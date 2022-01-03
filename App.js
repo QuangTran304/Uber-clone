@@ -6,6 +6,7 @@ import { store } from './store';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MapScreen from './screens/MapScreen';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -14,7 +15,18 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
-          <HomeScreen />
+          <Stack.Navigator>
+            <Stack.Screen
+              name='HomeScreen'
+              component={HomeScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name='MapScreen'
+              component={MapScreen}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
